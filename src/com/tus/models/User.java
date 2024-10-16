@@ -3,7 +3,7 @@ package com.tus.models;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public sealed abstract class User permits Manager, Customer {
+public sealed abstract class User permits Teller, Customer {
 	private String firstName;
 	private String lastName;
 	private LocalDate dateOfBirth;
@@ -18,7 +18,7 @@ public sealed abstract class User permits Manager, Customer {
 		this.phoneNo = phoneNo;
 		this.address = address;
 	}
-
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -61,7 +61,7 @@ public sealed abstract class User permits Manager, Customer {
 
 	@Override
 	public String toString() {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/mm/yyyy");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
 		
 		return "Name: " + firstName + " " + lastName + "\n" +
 				"DOB: " + dateOfBirth.format(formatter) + "\n" +
