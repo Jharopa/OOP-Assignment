@@ -1,8 +1,10 @@
 package com.tus.models;
 
 import com.tus.interfaces.Account;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class Customer extends User {
 	private ArrayList<Account> accounts;
@@ -19,5 +21,12 @@ public final class Customer extends User {
 	@Override
 	public String toString() {
 		return super.toString();
+	}
+	
+	public static Customer findCustomerById(Collection<Customer> customers, Integer id) {
+		return customers.stream()
+				.filter(c -> id.equals(c.getId()))
+				.findFirst()
+				.orElse(null);
 	}
 }
