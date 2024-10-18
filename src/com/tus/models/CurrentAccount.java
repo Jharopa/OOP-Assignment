@@ -22,7 +22,7 @@ public class CurrentAccount implements Account {
 	@Override
 	public void deposit(double amount) {
 		balance += amount;
-		transactions.add(new Transaction(LocalDate.now(), this, amount, balance));
+		transactions.add(new Transaction(LocalDate.now(), amount, balance));
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class CurrentAccount implements Account {
 		
 		if(canWidthdraw) {
 			balance -= amount;
-			transactions.add(new Transaction(LocalDate.now(), this, -amount, balance));
+			transactions.add(new Transaction(LocalDate.now(), -amount, balance));
 		}
 	}
 	

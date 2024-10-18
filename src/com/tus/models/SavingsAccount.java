@@ -22,7 +22,7 @@ public class SavingsAccount implements Account {
 	@Override
 	public void deposit(double amount) {
 		balance += amount;
-		transactions.add(new Transaction(LocalDate.now(), this, amount, balance));
+		transactions.add(new Transaction(LocalDate.now(), amount, balance));
 	}
 
 	@Override
@@ -31,14 +31,14 @@ public class SavingsAccount implements Account {
 		
 		if(canWidthdraw) {
 			balance -= amount;
-			transactions.add(new Transaction(LocalDate.now(), this, -amount, balance));
+			transactions.add(new Transaction(LocalDate.now(), -amount, balance));
 		}
 	}
 	
 	public void payDividends() {
 		double dividends = (balance / 2) * 0.0036;
 		balance += dividends;
-		transactions.add(new Transaction(LocalDate.now(), this, dividends, balance));
+		transactions.add(new Transaction(LocalDate.now(), dividends, balance));
 	}
 
 }

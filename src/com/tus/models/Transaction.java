@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import com.tus.interfaces.Account;
 
-public record Transaction(LocalDate transactionDate, Account account, double amount, double balance) {
+public record Transaction(LocalDate transactionDate, double amount, double balance) {
 	
 	@Override
 	public String toString() {
