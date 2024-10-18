@@ -2,21 +2,29 @@ package com.tus.models;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public sealed abstract class User permits Teller, Customer {
+	private int id;
 	private String firstName;
 	private String lastName;
 	private LocalDate dateOfBirth;
 	private String phoneNo;
 	private String address;
 	
+	private static AtomicInteger nextId = new AtomicInteger();
+	
 	public User(String firstName, String lastName, LocalDate dateOfBirth, String phoneNo, String address) {
-		super();
+		id = nextId.incrementAndGet();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
 		this.phoneNo = phoneNo;
 		this.address = address;
+	}
+	
+	public int getId() {
+		return id;
 	}
 	
 	public String getFirstName() {
@@ -58,12 +66,17 @@ public sealed abstract class User permits Teller, Customer {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
+	
+	public String getFullName() {
+		return firstName + " " + lastName;
+	}
+	
 	@Override
 	public String toString() {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
 		
-		return "Name: " + firstName + " " + lastName + "\n" +
+		return "User ID: " + id + "\n" + 
+				"Name: " + firstName + " " + lastName + "\n" +
 				"DOB: " + dateOfBirth.format(formatter) + "\n" +
 				"Contact Number: " + phoneNo + "\n" +
 				"Address: " + address + "\n";
