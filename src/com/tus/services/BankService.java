@@ -9,7 +9,9 @@ import java.util.stream.Collectors;
 
 import com.tus.enums.AccountType;
 import com.tus.interfaces.Accountable;
+import com.tus.models.Account;
 import com.tus.models.Customer;
+import com.tus.models.SavingsAccount;
 import com.tus.models.Teller;
 import com.tus.models.User;
 
@@ -34,6 +36,17 @@ public class BankService {
 		users.add(c2);
 	}
 	
+	private void mainMenu() {
+		System.out.println("---------\nBank Menu\n---------");
+		System.out.println("1. List Customers");
+		System.out.println("2. List Tellers");
+		System.out.println("3. Add new customer");
+		System.out.println("4. Pay Monthly Dividends");
+		System.out.println("5. Customer Menu");
+		System.out.println("0. Quit");
+		System.out.print("Select option from menu above: ");
+	}
+	
 	private void listCustomers() {
 		System.out.println("---------\nCustomers\n---------");
 		
@@ -50,15 +63,19 @@ public class BankService {
 			.forEach(t -> System.out.println(t));
 	}
 	
-	private void mainMenu() {
-		System.out.println("---------\nBank Menu\n---------");
-		System.out.println("1. List Customers");
-		System.out.println("2. List Tellers");
-		System.out.println("3. Add new customer");
-		System.out.println("4. Pay Monthly Dividends");
-		System.out.println("5. Customer Menu");
-		System.out.println("0. Quit");
-		System.out.print("Select option from menu above: ");
+	private void payDividends() {
+		var customers = users.stream()
+			.filter(u -> u instanceof Customer)
+			.map(c -> (Customer) c)
+			.collect(Collectors.toList());
+			
+		customers.forEach(c -> {
+			for (Account account : c.getAccounts()) {
+				if (account instanceof SavingsAccount) {
+					((SavingsAccount) account).payDividends(); 
+				}
+			}
+		});
 	}
 	
 	public void run() {
@@ -87,6 +104,7 @@ public class BankService {
 			case 3:
 				break;
 			case 4:
+				payDividends();
 				break;
 			case 5:
 				var customers = users.stream()
