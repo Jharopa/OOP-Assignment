@@ -3,6 +3,7 @@ package com.tus.services;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -53,7 +54,9 @@ public class BankService {
 		System.out.println("---------\nBank Menu\n---------");
 		System.out.println("1. List Customers");
 		System.out.println("2. List Tellers");
-		System.out.println("3. Customer Menu");
+		System.out.println("3. Add new customer");
+		System.out.println("4. Pay Monthly Dividends");
+		System.out.println("5. Customer Menu");
 		System.out.println("0. Quit");
 		System.out.print("Select option from menu above: ");
 	}
@@ -64,7 +67,13 @@ public class BankService {
 		do  {
 			mainMenu();
 			
-			selection = input.nextInt();
+			try {
+				selection = input.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("Invlaid input, menu selection must be an interger.\n");
+				input.nextLine();
+				continue;
+			}
 			
 			System.out.println();
 			
@@ -76,6 +85,10 @@ public class BankService {
 				listTellers();
 				break;
 			case 3:
+				break;
+			case 4:
+				break;
+			case 5:
 				var customers = users.stream()
 					.filter(c -> c instanceof Customer)
 					.map(c -> (Customer) c)

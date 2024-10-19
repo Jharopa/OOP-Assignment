@@ -1,10 +1,9 @@
 package com.tus.services;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
-import com.tus.interfaces.Accountable;
 import com.tus.models.Account;
 import com.tus.models.Customer;
 import com.tus.utils.StringUtils;
@@ -37,14 +36,21 @@ public class CustomerService {
 				System.out.println(customer.getId() + "\t" + customer.getFullName());
 			}
 			
-			System.out.print("Please select customer from list above by ID: ");
+			int id;
 			
-			int id = input.nextInt();
-			
-			currentCustomer = Customer.findCustomerById(customers, id);
-			
-			if (currentCustomer == null) {
-				System.out.println("Unable to find customer with ID " + id);
+			try {
+				System.out.print("Please select customer from list above by ID: ");
+				
+				id = input.nextInt();
+				
+				currentCustomer = Customer.findCustomerById(customers, id);
+				
+				if (currentCustomer == null) {
+					System.out.println("Unable to find customer with ID " + id);
+				}
+			} catch (InputMismatchException e) {
+				System.out.println("Invalid input, Customer ID must be an integer.");
+				input.nextLine();
 			}
 			
 			System.out.println();
@@ -61,16 +67,24 @@ public class CustomerService {
 				System.out.println(account);
 			}
 			
-			System.out.print("Please select customer from list above by ID: ");
+			int id;
 			
-			int id = input.nextInt();
-			
-			selectedAccount = Account.findAccountById(currentCustomer.getAccounts(), id);
-			
-			if (currentCustomer == null) {
-				System.out.println("Unable to find account with ID " + id + "\n");
+			try {
+				System.out.print("Please select customer from list above by ID: ");
+				
+				id = input.nextInt();
+				
+				selectedAccount = Account.findAccountById(currentCustomer.getAccounts(), id);
+				
+				if (currentCustomer == null) {
+					System.out.println("Unable to find account with ID " + id + "\n");
+				}
+			} catch (InputMismatchException e) {
+				System.out.println("Invalid input, Account ID must be an integer.");
+				input.nextLine();
 			}
-		} while (selectedAccount == null); 
+			
+ 		} while (selectedAccount == null); 
 		
 		return selectedAccount;
 	}
@@ -109,7 +123,13 @@ public class CustomerService {
 		do {
 			mainMenu();
 			
-			selection = input.nextInt();
+			try {
+				selection = input.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("Invlaid input, menu selection must be an interger.\n");
+				input.nextLine();
+				continue;
+			}
 			
 			Account account;
 			
