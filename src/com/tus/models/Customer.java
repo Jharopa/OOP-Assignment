@@ -1,7 +1,5 @@
 package com.tus.models;
 
-import com.tus.interfaces.Account;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -12,6 +10,10 @@ public final class Customer extends User {
 	public Customer(String firstName, String lastName, LocalDate dateOfBirth, String phoneNo, String address) {
 		super(firstName, lastName, dateOfBirth, phoneNo, address);
 		accounts = new ArrayList<Account>();
+	}
+	
+	public ArrayList<Account> getAccounts() {
+		return accounts;
 	}
 	
 	public void addAccount(Account account) {

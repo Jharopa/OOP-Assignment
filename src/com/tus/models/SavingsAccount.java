@@ -2,27 +2,13 @@ package com.tus.models;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
-import com.tus.interfaces.Account;
+import com.tus.interfaces.Accountable;
 
-public class SavingsAccount implements Account {
-	private double balance;
-	private ArrayList<Transaction> transactions;
-	
+public class SavingsAccount extends Account {
 	public SavingsAccount(double balance) {
-		this.balance = balance;
-		this.transactions = new  ArrayList<Transaction>();
-	}
-
-	@Override
-	public double getBalance() {
-		return balance;
-	}
-
-	@Override
-	public void deposit(double amount) {
-		balance += amount;
-		transactions.add(new Transaction(LocalDate.now(), amount, balance));
+		super(balance);
 	}
 
 	@Override
@@ -40,5 +26,9 @@ public class SavingsAccount implements Account {
 		balance += dividends;
 		transactions.add(new Transaction(LocalDate.now(), dividends, balance));
 	}
-
+	
+	@Override
+	public String toString() {
+		return id + "\tSavings\t" + balance;
+	}
 }

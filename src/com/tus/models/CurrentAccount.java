@@ -2,27 +2,13 @@ package com.tus.models;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
-import com.tus.interfaces.Account;
+import com.tus.interfaces.Accountable;
 
-public class CurrentAccount implements Account {
-	private double balance;
-	private ArrayList<Transaction> transactions;
-	
+public class CurrentAccount extends Account {
 	public CurrentAccount(double balance) {
-		this.balance = balance;
-		this.transactions = new  ArrayList<Transaction>();
-	}
-
-	@Override
-	public double getBalance() {
-		return balance;
-	}
-
-	@Override
-	public void deposit(double amount) {
-		balance += amount;
-		transactions.add(new Transaction(LocalDate.now(), amount, balance));
+		super(balance);
 	}
 
 	@Override
@@ -35,7 +21,8 @@ public class CurrentAccount implements Account {
 		}
 	}
 	
-	boolean isOverdrawn() {
-		return balance < 0;
+	@Override
+	public String toString() {
+		return id + "\tSavings\t" + balance;
 	}
 }
