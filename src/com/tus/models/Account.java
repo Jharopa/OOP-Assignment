@@ -52,7 +52,7 @@ public abstract class Account implements Accountable {
 		}
 	}
 	
-	public static Account findCustomerById(Collection<Account> accounts, Integer id) {
+	public static Account findAccountById(Collection<Account> accounts, Integer id) {
 		return accounts.stream()
 				.filter(a -> id.equals(a.getId()))
 				.findFirst()
