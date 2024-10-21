@@ -14,6 +14,7 @@ import com.tus.models.Customer;
 import com.tus.models.SavingsAccount;
 import com.tus.models.Teller;
 import com.tus.models.User;
+import com.tus.utils.StringUtils;
 
 public class BankService {
 	private ArrayList<User> users = new ArrayList<User>();
@@ -37,7 +38,7 @@ public class BankService {
 	}
 	
 	private void mainMenu() {
-		System.out.println("---------\nBank Menu\n---------");
+		System.out.println(StringUtils.makeHeader("Bank Menu", '*'));
 		System.out.println("1. List Customers");
 		System.out.println("2. List Tellers");
 		System.out.println("3. Add new customer");
@@ -48,7 +49,7 @@ public class BankService {
 	}
 	
 	private void listCustomers() {
-		System.out.println("---------\nCustomers\n---------");
+		System.out.println(StringUtils.makeHeader("Customers"));
 		
 		users.stream()
 			.filter(c -> c instanceof Customer)
@@ -56,7 +57,7 @@ public class BankService {
 	}
 	
 	private void listTellers() {
-		System.out.println("-------\nTellers\n-------");
+		System.out.println(StringUtils.makeHeader("Tellers"));
 		
 		users.stream()
 			.filter(t -> t instanceof Teller)
