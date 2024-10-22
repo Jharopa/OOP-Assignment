@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public sealed abstract class User permits Teller, Customer {
+import com.tus.interfaces.Printable;
+
+public sealed abstract class User implements Printable permits Teller, Customer {
 	private int id;
 	private String firstName;
 	private String lastName;

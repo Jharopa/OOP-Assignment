@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import com.tus.enums.AccountType;
 import com.tus.interfaces.Accountable;
+import com.tus.interfaces.Printable;
 import com.tus.models.Account;
 import com.tus.models.Customer;
 import com.tus.models.SavingsAccount;
@@ -53,7 +54,7 @@ public class BankService {
 		
 		users.stream()
 			.filter(c -> c instanceof Customer)
-			.forEach(c -> System.out.println(c));
+			.forEach(User::print);
 	}
 	
 	private void listTellers() {
@@ -61,7 +62,7 @@ public class BankService {
 		
 		users.stream()
 			.filter(t -> t instanceof Teller)
-			.forEach(t -> System.out.println(t));
+			.forEach(User::print);
 	}
 	
 	private void payDividends() {

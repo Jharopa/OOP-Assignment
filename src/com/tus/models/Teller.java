@@ -18,4 +18,9 @@ public final class Teller extends User {
 		
 		return super.toString() + "Password: " + new String(array) + "\n";
 	}
+
+	@Override
+	public void print() {
+		System.out.println(this);
+	}
 }

@@ -1,6 +1,6 @@
 package com.tus.enums;
 
-public enum AccountType{
+public enum AccountType {
 	Savings,
 	Current
 }

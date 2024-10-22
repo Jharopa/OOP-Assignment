@@ -31,4 +31,9 @@ public final class Customer extends User {
 				.findFirst()
 				.orElse(null);
 	}
+
+	@Override
+	public void print() {
+		System.out.println(this);
+	}
 }
