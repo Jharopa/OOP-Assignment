@@ -57,6 +57,15 @@ public class BankService {
 			.forEach(Printable::print);
 	}
 	
+	@SuppressWarnings("unused")
+	private void listCustomers(Customer... customers) {
+		System.out.println(StringUtils.makeHeader("Customers"));
+		
+		for (Customer customer : customers) {
+			customer.print();
+		}
+	}
+	
 	private void listTellers() {
 		System.out.println(StringUtils.makeHeader("Tellers"));
 		
