@@ -31,4 +31,9 @@ public final class CurrentAccount extends Account {
 	public String toString() {
 		return id + "\tSavings\t" + balance;
 	}
+	
+	@Override
+	public String accountString() {
+		return "Current Account";
+	}
 }

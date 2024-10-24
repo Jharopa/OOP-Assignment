@@ -11,4 +11,8 @@ public sealed interface Accountable permits Account {
 			case Current -> new CurrentAccount(initialBalance);
 		};
 	}
+	
+	public default String accountString() {
+		return "Generic Account";
+	}
 }

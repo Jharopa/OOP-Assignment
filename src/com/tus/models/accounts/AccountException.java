@@ -1,6 +1,6 @@
 package com.tus.models.accounts;
 
-public class AccountException extends Exception{
+public class AccountException extends Exception {
 	private static final long serialVersionUID = 1L;
 	
 	public AccountException() {

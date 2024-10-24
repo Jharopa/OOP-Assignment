@@ -46,8 +46,7 @@ public abstract sealed class Account implements Accountable permits SavingsAccou
 	public void listTransactions() {
 		if (transactions.size() == 0) {
 			System.out.println("No transactions available");
-		}
-		else {
+		} else {
 			String header = StringUtils.makeHeader("Account " + id + " Transactions");
 			
 			System.out.println(header);
