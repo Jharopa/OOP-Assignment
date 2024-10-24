@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import com.tus.models.Account;
-import com.tus.models.Customer;
+import com.tus.models.accounts.Account;
+import com.tus.models.users.Customer;
 import com.tus.utils.StringUtils;
 
 public class CustomerService {

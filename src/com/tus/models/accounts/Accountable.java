@@ -1,11 +1,8 @@
-package com.tus.interfaces;
+package com.tus.models.accounts;
 
 import com.tus.enums.AccountType;
-import com.tus.models.Account;
-import com.tus.models.CurrentAccount;
-import com.tus.models.SavingsAccount;
 
-public interface Accountable {
+public sealed interface Accountable permits Account {
 	double getBalance();
 	void deposit(double amount);
 	void withdraw(double amount);

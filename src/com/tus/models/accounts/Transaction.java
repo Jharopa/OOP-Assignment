@@ -1,8 +1,7 @@
-package com.tus.models;
+package com.tus.models.accounts;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import com.tus.interfaces.Accountable;
 
 public record Transaction(LocalDate transactionDate, double amount, double balance) {
 	

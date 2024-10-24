@@ -8,13 +8,13 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import com.tus.enums.AccountType;
-import com.tus.interfaces.Accountable;
 import com.tus.interfaces.Printable;
-import com.tus.models.Account;
-import com.tus.models.Customer;
-import com.tus.models.SavingsAccount;
-import com.tus.models.Teller;
-import com.tus.models.User;
+import com.tus.models.accounts.Account;
+import com.tus.models.accounts.Accountable;
+import com.tus.models.accounts.SavingsAccount;
+import com.tus.models.users.Customer;
+import com.tus.models.users.Teller;
+import com.tus.models.users.User;
 import com.tus.utils.StringUtils;
 
 public class BankService {
@@ -54,7 +54,7 @@ public class BankService {
 		
 		users.stream()
 			.filter(c -> c instanceof Customer)
-			.forEach(User::print);
+			.forEach(Printable::print);
 	}
 	
 	private void listTellers() {
@@ -62,7 +62,7 @@ public class BankService {
 		
 		users.stream()
 			.filter(t -> t instanceof Teller)
-			.forEach(User::print);
+			.forEach(Printable::print);
 	}
 	
 	private void payDividends() {
@@ -74,7 +74,7 @@ public class BankService {
 		customers.forEach(c -> {
 			for (Account account : c.getAccounts()) {
 				if (account instanceof SavingsAccount) {
-					((SavingsAccount) account).payDividends(); 
+					((SavingsAccount) account).payDividends();
 				}
 			}
 		});

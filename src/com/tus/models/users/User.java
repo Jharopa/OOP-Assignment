@@ -1,4 +1,4 @@
-package com.tus.models;
+package com.tus.models.users;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

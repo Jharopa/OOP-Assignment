@@ -1,14 +1,13 @@
-package com.tus.models;
+package com.tus.models.accounts;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import com.tus.interfaces.Accountable;
 import com.tus.utils.StringUtils;
 
-public abstract class Account implements Accountable {
+public abstract sealed class Account implements Accountable permits SavingsAccount, CurrentAccount{
 	protected int id;
 	protected double balance;
 	protected ArrayList<Transaction> transactions;

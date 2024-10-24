@@ -1,8 +1,10 @@
-package com.tus.models;
+package com.tus.models.users;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+
+import com.tus.models.accounts.Account;
 
 public final class Customer extends User {
 	private ArrayList<Account> accounts;

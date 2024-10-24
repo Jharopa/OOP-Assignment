@@ -1,12 +1,14 @@
-package com.tus.models;
+package com.tus.models.accounts;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import com.tus.interfaces.Accountable;
-
-public class CurrentAccount extends Account {
+public final class CurrentAccount extends Account {
+	public CurrentAccount() {
+		this(0);
+	}
+	
 	public CurrentAccount(double balance) {
 		super(balance);
 	}
