@@ -30,13 +30,17 @@ public abstract sealed class Account implements Accountable permits SavingsAccou
 	}
 
 	@Override
-	public void deposit(double amount) {
+	public void deposit(double amount) throws AccountException {
+		if (amount <= 0) {
+			throw new AccountException("Deposit amount must be an non-zero value");
+		}
+		
 		balance += amount;
 		transactions.add(new Transaction(LocalDate.now(), amount, balance));
 	}
 
 	@Override
-	public void withdraw(double amount) {
+	public void withdraw(double amount) throws AccountException {
 	}
 	
 	public void listTransactions() {

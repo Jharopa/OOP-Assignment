@@ -7,9 +7,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import com.tus.enums.AccountType;
 import com.tus.interfaces.Printable;
 import com.tus.models.accounts.Account;
+import com.tus.models.accounts.AccountType;
 import com.tus.models.accounts.Accountable;
 import com.tus.models.accounts.SavingsAccount;
 import com.tus.models.users.Customer;

@@ -14,7 +14,11 @@ public final class SavingsAccount extends Account {
 	}
 
 	@Override
-	public void withdraw(double amount) {
+	public void withdraw(double amount) throws AccountException {
+		if (amount <= 0) {
+			throw new AccountException("Withdrawl amount must be an non-zero value");
+		}
+		
 		var canWidthdraw = amount < (balance / 2) && (balance - amount) >= 100;
 		
 		if(canWidthdraw) {

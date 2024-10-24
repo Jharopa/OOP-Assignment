@@ -1,4 +1,4 @@
-package com.tus.enums;
+package com.tus.models.accounts;
 
 public enum AccountType {
 	Savings,

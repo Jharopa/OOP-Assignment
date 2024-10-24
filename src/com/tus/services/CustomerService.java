@@ -5,6 +5,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.tus.models.accounts.Account;
+import com.tus.models.accounts.AccountException;
 import com.tus.models.users.Customer;
 import com.tus.utils.StringUtils;
 
@@ -92,21 +93,38 @@ public class CustomerService {
 	private void deposit(Account account) {
 		System.out.print("\nEnter amount to be deposited: ");
 		
-		double amount = input.nextInt();
+		double amount;
 		
-		account.deposit(amount);
-		
-		System.out.println("\nSuccessfully desposited " + amount + " to account " + account.getId() + "\n");
+		try {
+			amount = input.nextDouble();
+			account.deposit(amount);
+			System.out.println("\nSuccessfully desposited " + amount + " to account " + account.getId() + "\n");
+		} catch (InputMismatchException e) {
+			System.out.println("Invalid input, deposit amount must be a decimal.");
+			input.nextLine();
+		} catch (AccountException e) {
+			System.out.println("Invalid input, " + e.getMessage());
+		} finally {
+			System.out.println("Cancelling deposit.\n");
+		}
 	}
 	
 	private void widthdraw(Account account) {
 		System.out.print("\nEnter amount to be widthdrawn: ");
+		double amount;
 		
-		double amount = input.nextInt();
-		
-		account.withdraw(amount);
-		
-		System.out.println("\nSuccessfully withdrew " + amount + " to account " + account.getId() + "\n");
+		try {
+			amount = input.nextDouble();
+			account.withdraw(amount);
+			System.out.println("\nSuccessfully withdrew " + amount + " to account " + account.getId() + "\n");
+		} catch (InputMismatchException e) {
+			System.out.println("Invalid input, widthdrawl must be a decimal.");
+			input.nextLine();
+		} catch (AccountException e) {
+			System.out.println("Invalid input, " + e.getMessage());
+		} finally {
+			System.out.println("Cancelling widthdrawl.\n");
+		}
 	}
 	
 	private void listTransactions(Account account) {
